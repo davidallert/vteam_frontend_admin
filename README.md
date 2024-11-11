@@ -1,1 +1,1 @@
-# vteam_frontend_admin
+# Frontend repository for the admin view.
