@@ -1,1 +1,1 @@
-# Frontend repository for the admin view.
+# Frontend repository for the admin client.
