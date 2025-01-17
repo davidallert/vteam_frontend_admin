@@ -19,7 +19,7 @@ const client = new GraphQLClient('http://localhost:8585/graphql/scooters', {
 });
 
 const CREATE_SCOOTER_MUTATION = gql`
-    mutation CreateScooter($customid: String!, $status: String!, $speed: Float!, $battery_level: Float!, $coordinates: [Float!]!, $station: String!) {
+    mutation CreateScooter($customid: String!, $status: String!, $speed: Float!, $battery_level: Float!, $coordinates: [Float!]!, $station: String!, $designated_parking: Boolean!) {
         scooterCreateOne(record: {
             customid: $customid,
             status: $status,
@@ -30,7 +30,7 @@ const CREATE_SCOOTER_MUTATION = gql`
                 coordinates: $coordinates
             },
             at_station: $station,
-            designated_parking: false
+            designated_parking: $designated_parking
         }) {
             _id
             customid
@@ -54,7 +54,8 @@ const CreateScooter = () => {
     const [station, setStation] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    
+    const [designatedParking, setDesignatedParking] = useState(false);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -80,7 +81,8 @@ const CreateScooter = () => {
             speed: Number(speed),
             battery_level: Number(batteryLevel),
             coordinates: [longitude, latitude],
-            station
+            station,
+            designated_parking: designatedParking 
         };
 
         console.log("CREATE_SCOOTER_MUTATION", CREATE_SCOOTER_MUTATION)
@@ -175,6 +177,17 @@ const CreateScooter = () => {
                         onChange={(e) => setStation(e.target.value)}
                         required
                     />
+                </div>
+                <div>
+                    <label htmlFor="designatedParking">
+                        <input
+                            id="designatedParking"
+                            type="checkbox"
+                            checked={designatedParking}
+                            onChange={(e) => setDesignatedParking(e.target.checked)}
+                        />
+                        Designated Parking
+                    </label>
                 </div>
                 <button type="submit">Create Scooter</button>
             </form>
