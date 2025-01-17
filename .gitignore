@@ -24,3 +24,4 @@ yarn-error.log*
 
 # Ignore notes.txt (I type notes inside)
 notes.txt
+jest-config.txt

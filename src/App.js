@@ -1,30 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
-import RegistrationForm from './components/RegistrationForm';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AdminLoginForm from './components/AdminLoginForm';
+import AdminDashboard from './components/AdminDashboard';
+import ScootersPage from './components/ScootersPage';
+import CreateScooter from './components/scooter-sub-components/CreateScooter';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        {/* <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
-      </header>
-
-      <body>
-        <div>
-            <RegistrationForm />
-        </div>
-      </body>
+      <div>
+        <Router>
+          <Routes>
+            <Route path="/" element={<AdminLoginForm />} />
+            <Route path="/admin-dashboard" element={<AdminDashboard />} />
+            <Route path="/scooters" element={<ScootersPage />} />
+            <Route path="/create-scooter" element={<CreateScooter />} />
+          </Routes>
+        </Router>
+      </div>
     </div>
   );
 }
