@@ -68,13 +68,13 @@ const CreateScooter = () => {
         const [longitude, latitude] = coordinates.split(',').map(Number);
         
         // Log form values before sending
-        console.log('Form Values:', {
-            customid,
-            status,
-            speed,
-            batteryLevel,
-            coordinates
-        });
+        // console.log('Form Values:', {
+        //     customid,
+        //     status,
+        //     speed,
+        //     batteryLevel,
+        //     coordinates
+        // });
         const variables = {
             customid,
             status,
@@ -196,3 +196,5 @@ const CreateScooter = () => {
 };
 
 export default CreateScooter;
+
+// Flow: Form Input → React State → Variables Object → GraphQL Mutation → Server
