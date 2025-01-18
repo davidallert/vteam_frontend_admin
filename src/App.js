@@ -4,6 +4,7 @@ import AdminLoginForm from './components/AdminLoginForm';
 import AdminDashboard from './components/AdminDashboard';
 import ScootersPage from './components/ScootersPage';
 import CreateScooter from './components/scooter-sub-components/CreateScooter';
+import DeleteScooter from './components/scooter-sub-components/DeleteScooter';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
             <Route path="/scooters" element={<ScootersPage />} />
             <Route path="/create-scooter" element={<CreateScooter />} />
+            <Route path="/delete-scooter" element={<DeleteScooter />} />
           </Routes>
         </Router>
       </div>

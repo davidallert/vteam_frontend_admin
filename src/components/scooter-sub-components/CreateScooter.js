@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GraphQLClient, gql } from 'graphql-request';
-import { stringifyForDisplay } from '@apollo/client/utilities';
 
 const token = localStorage.getItem('token');
 console.log('Token present:', !!token);

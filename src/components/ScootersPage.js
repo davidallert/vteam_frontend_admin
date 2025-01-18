@@ -8,6 +8,7 @@ function DisplayScooters() {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
+
     // Define the GraphQL client with the Authorization header
     const client = new GraphQLClient('http://localhost:8585/graphql/scooters', {
         headers: {
@@ -22,8 +23,11 @@ function DisplayScooters() {
             scooters {
                 _id
                 status
+                customid
                 speed
                 battery_level
+                at_station
+                designated_parking
                 current_location {
                     type
                     coordinates
@@ -58,13 +62,19 @@ function DisplayScooters() {
                     {scooters.map((scooter) => (
                         <li key={scooter._id}>
                             <p><strong>ID:</strong> {scooter._id}</p>
+                            <p><strong>customid:</strong> {scooter.customid}</p>
                             <p><strong>Status:</strong> {scooter.status}</p>
                             <p><strong>Speed:</strong> {scooter.speed} km/h</p>
                             <p><strong>Battery Level:</strong> {scooter.battery_level}%</p>
+                            <p><strong>Station:</strong> {scooter.at_station}</p>
+                            <p><strong>Designated parking:</strong> {String(scooter.designated_parking)}</p>
                             <p>
                                 <strong>Location:</strong> {scooter.current_location.type} - [
                                 {scooter.current_location.coordinates.join(', ')}]
                             </p>
+                            <button onClick={() => navigate('/delete-scooter', { 
+                                state: { scooterCustomId: scooter.customid } 
+                            })}>Delete Scooter</button>
                             <hr />
                         </li>
                     ))}
