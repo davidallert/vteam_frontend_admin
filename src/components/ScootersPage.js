@@ -72,9 +72,11 @@ function DisplayScooters() {
                                 <strong>Location:</strong> {scooter.current_location.type} - [
                                 {scooter.current_location.coordinates.join(', ')}]
                             </p>
+
                             <button onClick={() => navigate('/delete-scooter', { 
                                 state: { scooterCustomId: scooter.customid } 
                             })}>Delete Scooter</button>
+
                             <hr />
                         </li>
                     ))}

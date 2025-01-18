@@ -25,7 +25,7 @@ const CREATE_SCOOTER_MUTATION = gql`
             speed: $speed,
             battery_level: $battery_level,
             current_location: {
-                type: "Point",
+                type: Point,
                 coordinates: $coordinates
             },
             at_station: $station,
