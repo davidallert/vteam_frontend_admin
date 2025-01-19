@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ScootersPage from './ScootersPage';
+import CustomersPage from './CustomersPage';
 
 const AdminDashboard = () => {
     const location = useLocation();
@@ -18,22 +19,21 @@ const AdminDashboard = () => {
             <select value={selectedPage} onChange={handlePageChange}>
                 <option value="">Select a page</option>
                 <option value="scooters">scooters</option>
+                <option value="Customers Management">Customers Management</option>
                 <option value="Map">Map</option>
                 <option value="Overview">Overview</option>
                 <option value="Charging Stations">Charging Stations</option>
                 <option value="Parking Spots Management">Parking Spots Management</option>
                 <option value="Bike Management">Bike Management</option>
-                <option value="Customers Management">Customers Management</option>
                 <option value="Billing and Fees Management">Billing and Fees Management</option>
                 <option value="Map View">Map View</option>
             </select>
             {selectedPage === 'scooters' && <ScootersPage />}
+            {selectedPage === 'Customers Management' && <CustomersPage />}
             {selectedPage === 'Map' && <p>Welcome to the map!</p>}
             {selectedPage === 'Overview' && <p>Manage Overview here.</p>}
             {selectedPage === 'Charging Stations' && <p>Manage Charging Stations here.</p>}
             {selectedPage === 'Parking Spots Management' && <p>Adjust Parking Spots Management here.</p>}
-            {selectedPage === 'Bike Management' && <p>Manage Bikes here.</p>}
-            {selectedPage === 'Customers Management' && <p>Manage Customers here.</p>}
             {selectedPage === 'Billing and Fees Management' && <p>Manage Billing and Fees here.</p>}
             {selectedPage === 'Map View' && <p>View the map here.</p>}
         </div>

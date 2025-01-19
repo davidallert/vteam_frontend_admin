@@ -6,6 +6,11 @@ import ScootersPage from './components/ScootersPage';
 import CreateScooter from './components/scooter-sub-components/CreateScooter';
 import DeleteScooter from './components/scooter-sub-components/DeleteScooter';
 
+import CustomersPage from './components/CustomersPage';
+import DeleteUser from './components/user-sub-components/DeleteUser';
+import CreateUser from './components/user-sub-components/CreateUser';
+
+
 function App() {
   return (
     <div className="App">
@@ -17,6 +22,9 @@ function App() {
             <Route path="/scooters" element={<ScootersPage />} />
             <Route path="/create-scooter" element={<CreateScooter />} />
             <Route path="/delete-scooter" element={<DeleteScooter />} />
+            <Route path="/customers" element={<CustomersPage />} />
+            <Route path="/delete-user" element={<DeleteUser />} />
+            <Route path="/create-user" element={<CreateUser/>} />
           </Routes>
         </Router>
       </div>
