@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { GraphQLClient, gql } from 'graphql-request';
 import { useNavigate } from 'react-router-dom';
-
+import buttons from '../styles/shared/buttons.module.css'
+import layout from '../styles/shared/layout.module.css'
 
 function DisplayScooters() {
     const [scooters, setScooters] = useState([]);
@@ -58,31 +59,34 @@ function DisplayScooters() {
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {!error && scooters.length === 0 && <p>Loading scooters...</p>}
             {scooters.length > 0 && (
-                <ul>
-                    {scooters.map((scooter) => (
-                        <li key={scooter._id}>
-                            <p><strong>ID:</strong> {scooter._id}</p>
-                            <p><strong>customid:</strong> {scooter.customid}</p>
-                            <p><strong>Status:</strong> {scooter.status}</p>
-                            <p><strong>Speed:</strong> {scooter.speed} km/h</p>
-                            <p><strong>Battery Level:</strong> {scooter.battery_level}%</p>
-                            <p><strong>Station:</strong> {scooter.at_station}</p>
-                            <p><strong>Designated parking:</strong> {String(scooter.designated_parking)}</p>
-                            <p>
-                                <strong>Location:</strong> {scooter.current_location.type} - [
-                                {scooter.current_location.coordinates.join(', ')}]
-                            </p>
+                <div className={layout.wrapper}>
+                    <ul className={layout.ul}>
+                        {scooters.map((scooter) => (
+                            <li key={scooter._id} className={layout.li}>
+                                <h2><strong>Scooter:</strong> {scooter.customid}</h2>
+                                <p><strong>Database ID:</strong> {scooter._id}</p>
+                                {/* <p><strong>customid:</strong> {scooter.customid}</p> */}
+                                <p><strong>Status:</strong> {scooter.status}</p>
+                                <p><strong>Speed:</strong> {scooter.speed} km/h</p>
+                                <p><strong>Battery Level:</strong> {scooter.battery_level}%</p>
+                                <p><strong>Station:</strong> {scooter.at_station}</p>
+                                <p><strong>Designated parking:</strong> {String(scooter.designated_parking)}</p>
+                                <p>
+                                    <strong>Location:</strong> {scooter.current_location.type} - [
+                                    {`${scooter.current_location.coordinates[0].toFixed(4)}, ${scooter.current_location.coordinates[1].toFixed(4)}`}]
+                                </p>
 
-                            <button onClick={() => navigate('/delete-scooter', { 
-                                state: { scooterCustomId: scooter.customid } 
-                            })}>Delete Scooter</button>
+                                <button className={buttons.buttonPrimary} onClick={() => navigate('/delete-scooter', { 
+                                    state: { scooterCustomId: scooter.customid } 
+                                })}>Delete Scooter</button>
 
-                            <hr />
-                        </li>
-                    ))}
-                </ul>
+                                {/* <hr /> */}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             )}
-            <button onClick={() => navigate('/create-scooter')}>Create New Scooter</button>
+                <button className={buttons.buttonSecondary} onClick={() => navigate('/create-scooter')}>Create New Scooter</button> 
         </div>
     );
 }

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { GraphQLClient, gql } from 'graphql-request';
 import { useNavigate } from 'react-router-dom';
-
+import buttons from '../styles/shared/buttons.module.css'
+import layout from '../styles/shared/layout.module.css'
 
 function DisplayUsers() {
     const [users, setUsers] = useState([]);
@@ -53,26 +54,29 @@ function DisplayUsers() {
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {!error && users.length === 0 && <p>Loading users...</p>}
             {users.length > 0 && (
-                <ul>
-                    {users.map((user) => (
-                        <li key={user._id}>
-                            <p><strong>ID:</strong> {user._id}</p>
-                            <p><strong>Email:</strong> {user.email}</p>
-                            <p><strong>Admin:</strong> {String(user.admin)}</p>
-                            <p><strong>Name:</strong> {user.name}</p>
-                            <p><strong>Surname:</strong> {user.surname}</p>
-                            <p><strong>Amount:</strong> {user.amount}</p>
+                <div className={layout.wrapper}>
+                    <ul className={layout.ul}>
+                        {users.map((user) => (
+                            <li key={user._id} className={layout.li}>
+                                <h2>{user._id}</h2>
+                                {/* <p><strong>ID:</strong> {user._id}</p> */}
+                                <p><strong>Email:</strong> {user.email}</p>
+                                <p><strong>Admin:</strong> {String(user.admin)}</p>
+                                <p><strong>Name:</strong> {user.name}</p>
+                                <p><strong>Surname:</strong> {user.surname}</p>
+                                <p><strong>Amount:</strong> {user.amount}</p>
 
-                            <button onClick={() => navigate('/delete-user', { 
-                                state: { userId: user._id } 
-                            })}>Delete User</button>
+                                <button className={buttons.buttonPrimary} onClick={() => navigate('/delete-user', { 
+                                    state: { userId: user._id } 
+                                })}>Delete User</button>
 
-                            <hr />
-                        </li>
-                    ))}
-                </ul>
+                                {/* <hr /> */}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             )}
-            <button onClick={() => navigate('/create-user')}>Register New User</button>
+            <button className={buttons.buttonSecondary} onClick={() => navigate('/create-user')}>Register New User</button>
         </div>
     );
 }

@@ -1,0 +1,36 @@
+.buttonShared {
+  align-self: center; /* Center the button horizontally */
+  padding: 10px 20px;
+  margin: 10px 0;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-weight: bold;
+  transition-duration: 0.3s;
+}
+
+.buttonPrimary {
+  composes: buttonShared;
+  background-color: #000000;
+}
+
+.buttonSecondary {
+  composes: buttonShared;
+  background-color: #395557;
+}
+
+.buttonPrimary:hover,
+.buttonSecondary:hover {
+  background-color: #f75a5a;
+  transition-duration: 0.3s;
+}
+
+/* .form-elements-div .buttonPrimary,
+.form-elements-div .buttonSecondary {
+  font-size: 20px;
+  padding: 10px 20px;
+  margin-top: 15px;
+} */

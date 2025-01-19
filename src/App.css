@@ -59,19 +59,19 @@
   flex-direction: column;
 }
 
-button {
-  align-self: center; /* Center the button horizontally */
+/* button {
+  align-self: center;
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
+} */
 
-button:hover {
+/* button:hover {
   background-color: #0056b3;
-}
+} */
 
 /* For the labels */
 .form-elements-div label {
@@ -86,8 +86,8 @@ button:hover {
 }
 
 /* For the button */
-.form-elements-div button {
+/* .form-elements-div button {
   font-size: 20px;
-  padding: 10px 20px; /* Adjust button size */
-  margin-top: 15px; /* Add space above the button */
-}
+  padding: 10px 20px;
+  margin-top: 15px;
+} */

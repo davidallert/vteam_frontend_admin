@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { GraphQLClient, gql } from 'graphql-request';
 // import appImage from '../5.png';
-
+import buttons from '../styles/shared/buttons.module.css'
+import form from '../styles/shared/form.module.css'
 
 function Login() {
     const [email, setEmail] = useState('');
