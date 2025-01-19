@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { GraphQLClient, gql } from 'graphql-request';
 // import appImage from '../5.png';
-
+import buttons from '../styles/shared/buttons.module.css'
+import form from '../styles/shared/form.module.css'
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -62,6 +63,7 @@ function Login() {
 
             <form onSubmit={handleSubmit}>
         <input
+            className={form.input}
             type="email"
             placeholder="Enter your email"
             value={email}
@@ -69,13 +71,14 @@ function Login() {
             required
         />
         <input
+            className={form.input}
             type="password"
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
         />
-        <button type="submit" className="login-button">Login</button>
+        <button type="submit" className={buttons.buttonSecondary}>Login</button>
     </form>
     {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
     {googleOAuthUrl && (

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ScootersPage from './ScootersPage';
 import CustomersPage from './CustomersPage';
+import form from '../styles/shared/form.module.css'
 
 const AdminDashboard = () => {
     const location = useLocation();
@@ -16,7 +17,7 @@ const AdminDashboard = () => {
         <div>
             <h1>Admin Dashboard</h1>
             {message && <p>{message}</p>}
-            <select value={selectedPage} onChange={handlePageChange}>
+            <select className={form.input} value={selectedPage} onChange={handlePageChange}>
                 <option value="">Select a page</option>
                 <option value="scooters">scooters</option>
                 <option value="Customers Management">Customers Management</option>
