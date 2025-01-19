@@ -9,6 +9,7 @@ import DeleteScooter from './components/scooter-sub-components/DeleteScooter';
 import CustomersPage from './components/CustomersPage';
 import DeleteUser from './components/user-sub-components/DeleteUser';
 import CreateUser from './components/user-sub-components/CreateUser';
+import UpdateUserInfo from './components/user-sub-components/UpdateUserInfo';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path="/customers" element={<CustomersPage />} />
             <Route path="/delete-user" element={<DeleteUser />} />
             <Route path="/create-user" element={<CreateUser/>} />
+            <Route path="/update-user-info" element={<UpdateUserInfo/>} />
           </Routes>
         </Router>
       </div>

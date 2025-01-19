@@ -70,7 +70,9 @@ function DisplayUsers() {
                                     state: { userId: user._id } 
                                 })}>Delete User</button>
 
-                                {/* <hr /> */}
+                                <button className={buttons.buttonPrimary} onClick={() => navigate('/update-user-info', { 
+                                    state: { userId: user._id } 
+                                })}>Update User</button>
                             </li>
                         ))}
                     </ul>
