@@ -41,7 +41,7 @@ const CreateUser = () => {
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [amount, setAmount] = useState('');
-    const [admin, setAdmin] = useState('');
+    const [admin, setAdmin] = useState(false);
 
     const [error, setError] = useState('');
     const navigate = useNavigate();

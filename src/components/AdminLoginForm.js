@@ -81,18 +81,6 @@ function Login() {
         <button type="submit" className={buttons.buttonSecondary}>Login</button>
     </form>
     {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-    {googleOAuthUrl && (
-        <button
-            onClick={() => window.location.href = googleOAuthUrl}
-            className="google-button"
-        >
-            Continue with Google
-        </button>
-    )}
-    <p>Don't have an account? <Link to="/register">Sign up here</Link></p>
-    <div className="terms">
-        By continuing, you agree to our <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.
-    </div>
 </div>
 
     );
