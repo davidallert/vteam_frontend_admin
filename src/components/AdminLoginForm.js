@@ -59,39 +59,27 @@ function Login() {
         <div className="login-comp">
             {/* <img src={appImage} alt="App visual" className="scooter-img" /> */}
             <h2>Scooti.</h2>
+            <h4>Admin Login</h4>
 
             <form onSubmit={handleSubmit}>
-        <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-        />
-        <input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-        />
-        <button type="submit" className="login-button">Login</button>
-    </form>
-    {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-    {googleOAuthUrl && (
-        <button
-            onClick={() => window.location.href = googleOAuthUrl}
-            className="google-button"
-        >
-            Continue with Google
-        </button>
-    )}
-    <p>Don't have an account? <Link to="/register">Sign up here</Link></p>
-    <div className="terms">
-        By continuing, you agree to our <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.
-    </div>
-</div>
-
+                <input
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+                <input
+                    type="password"
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+                <button type="submit" className="login-button">Login</button>
+            </form>
+            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+        </div>
     );
 }
 
