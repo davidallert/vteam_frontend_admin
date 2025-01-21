@@ -4,9 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import buttons from '../styles/shared/buttons.module.css'
 import layout from '../styles/shared/layout.module.css'
 
+
 function DisplayUsers() {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState(null);
+    const [searchEmail, setSearchEmail] = useState('');
     const navigate = useNavigate();
 
 
@@ -51,6 +53,22 @@ function DisplayUsers() {
     return (
         <div>
             <h2>Users Management</h2>
+            <div>
+                    {/* Search form */}
+                    <form>
+                        <input
+                            type="text"
+                            value={searchEmail}
+                            onChange={(e) => setSearchEmail(e.target.value)}
+                            placeholder="Email to search"
+                            required
+                        /><br/>
+                        <button className={buttons.buttonPrimary} onClick={() => navigate('/find-user-by-email', { 
+                                        state: { userEmail: searchEmail } 
+                                    })}
+                        >Search</button>
+                    </form>
+            </div>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {!error && users.length === 0 && <p>Loading users...</p>}
             {users.length > 0 && (
@@ -58,7 +76,7 @@ function DisplayUsers() {
                     <ul className={layout.ul}>
                         {users.map((user) => (
                             <li key={user._id} className={layout.li}>
-                                <h2>{user._id}</h2>
+                                <h2>ID: {user._id}</h2>
                                 {/* <p><strong>ID:</strong> {user._id}</p> */}
                                 <p><strong>Email:</strong> {user.email}</p>
                                 <p><strong>Admin:</strong> {String(user.admin)}</p>
