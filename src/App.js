@@ -12,6 +12,9 @@ import CreateUser from './components/user-sub-components/CreateUser';
 import UpdateUserInfo from './components/user-sub-components/UpdateUserInfo';
 import FindUserByEmail from './components/user-sub-components/FindUserByEmail';
 
+import MapOverview from './components/MapOverview';
+
+
 
 function App() {
   return (
@@ -29,6 +32,7 @@ function App() {
             <Route path="/create-user" element={<CreateUser/>} />
             <Route path="/update-user-info" element={<UpdateUserInfo/>} />
             <Route path="/find-user-by-email" element={<FindUserByEmail/>} />
+            <Route path="/map-overview" element={<MapOverview/>} />
           </Routes>
         </Router>
       </div>

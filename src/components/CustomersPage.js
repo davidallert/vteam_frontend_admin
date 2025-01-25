@@ -11,7 +11,6 @@ function DisplayUsers() {
     const [searchEmail, setSearchEmail] = useState('');
     const navigate = useNavigate();
 
-
     // Define the GraphQL client with the Authorization header
     const client = new GraphQLClient('http://localhost:8585/graphql/users', {
         headers: {

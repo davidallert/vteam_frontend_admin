@@ -3,6 +3,8 @@ import { useLocation } from 'react-router-dom';
 import ScootersPage from './ScootersPage';
 import CustomersPage from './CustomersPage';
 import form from '../styles/shared/form.module.css'
+import MapOverview from './MapOverview';
+
 
 const AdminDashboard = () => {
     const location = useLocation();
@@ -31,7 +33,7 @@ const AdminDashboard = () => {
             </select>
             {selectedPage === 'scooters' && <ScootersPage />}
             {selectedPage === 'Customers Management' && <CustomersPage />}
-            {selectedPage === 'Map' && <p>Welcome to the map!</p>}
+            {selectedPage === 'Map' && <MapOverview />}
             {selectedPage === 'Overview' && <p>Manage Overview here.</p>}
             {selectedPage === 'Charging Stations' && <p>Manage Charging Stations here.</p>}
             {selectedPage === 'Parking Spots Management' && <p>Adjust Parking Spots Management here.</p>}

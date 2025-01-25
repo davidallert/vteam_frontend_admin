@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GraphQLClient, gql } from 'graphql-request';
 
+import { useDispatch } from 'react-redux';
+import { fetchScooters } from '../../redux-slices/ScootersSlice';
+
+
+
 const token = localStorage.getItem('token');
 console.log('Token present:', !!token);
 console.log('Token value:', token);
@@ -18,11 +23,10 @@ const client = new GraphQLClient('http://localhost:8585/graphql/scooters', {
 });
 
 const CREATE_SCOOTER_MUTATION = gql`
-    mutation CreateScooter($customid: String!, $status: String!, $speed: Float!, $battery_level: Float!, $coordinates: [Float!]!, $station: String!, $designated_parking: Boolean!) {
+    mutation CreateScooter($customid: String!, $status: String!, $battery_level: Float!, $coordinates: [Float!]!, $station: String!, $designated_parking: Boolean!) {
         scooterCreateOne(record: {
             customid: $customid,
             status: $status,
-            speed: $speed,
             battery_level: $battery_level,
             current_location: {
                 type: Point,
@@ -34,7 +38,6 @@ const CREATE_SCOOTER_MUTATION = gql`
             _id
             customid
             status
-            speed
             battery_level
             current_location {
                 type
@@ -47,13 +50,14 @@ const CREATE_SCOOTER_MUTATION = gql`
 const CreateScooter = () => {
     const [customid, setCustomid] = useState('');
     const [status, setStatus] = useState('');
-    const [speed, setSpeed] = useState('');
     const [batteryLevel, setBatteryLevel] = useState('');
     const [coordinates, setCoordinates] = useState('');
     const [station, setStation] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const [designatedParking, setDesignatedParking] = useState(false);
+
+    const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -70,14 +74,12 @@ const CreateScooter = () => {
         // console.log('Form Values:', {
         //     customid,
         //     status,
-        //     speed,
         //     batteryLevel,
         //     coordinates
         // });
         const variables = {
             customid,
             status,
-            speed: Number(speed),
             battery_level: Number(batteryLevel),
             coordinates: [longitude, latitude],
             station,
@@ -90,6 +92,7 @@ const CreateScooter = () => {
         try {
             const data = await client.request(CREATE_SCOOTER_MUTATION, variables);
             console.log('Response Data:', data);
+            dispatch(fetchScooters());
             navigate('/scooters');
         } catch (error) {
             console.error('Error creating scooter:', error);
@@ -125,7 +128,7 @@ const CreateScooter = () => {
                         onChange={(e) => setCustomid(e.target.value)}
                         required
                     />
-                <div>
+                <div/>
                     <label htmlFor="status">Status:</label>
                     <select
                         id="status"
@@ -137,15 +140,6 @@ const CreateScooter = () => {
                         <option value="active">Active</option>
                         <option value="inactive">Inactive</option>
                     </select>
-                </div>
-                    <label htmlFor="speed">Speed:</label>
-                    <input
-                        id="speed"
-                        type="number"
-                        value={speed}
-                        onChange={(e) => setSpeed(e.target.value)}
-                        required
-                    />
                 </div>
                 <div>
                     <label htmlFor="batteryLevel">Battery Level:</label>
