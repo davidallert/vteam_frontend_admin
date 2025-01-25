@@ -79,8 +79,8 @@ function MapOverview() {
         <MapContainer center={initialCenter} zoom={10} style={{ height: "600px", width: "100%" }}>
         {/* TileLayer for the map base */}
         <TileLayer
-            url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png" 
-            attribution="&copy; OpenStreetMap &copy; CARTO"
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution="&copy; OpenStreetMap contributors"
         />
 
         {/* Rendering markers for stations */}
