@@ -24,21 +24,21 @@ const AdminDashboard = () => {
                 <option value="scooters">scooters</option>
                 <option value="Customers Management">Customers Management</option>
                 <option value="Map">Map</option>
-                <option value="Overview">Overview</option>
+                {/* <option value="Overview">Overview</option>
                 <option value="Charging Stations">Charging Stations</option>
                 <option value="Parking Spots Management">Parking Spots Management</option>
                 <option value="Bike Management">Bike Management</option>
                 <option value="Billing and Fees Management">Billing and Fees Management</option>
-                <option value="Map View">Map View</option>
+                <option value="Map View">Map View</option> */}
             </select>
             {selectedPage === 'scooters' && <ScootersPage />}
             {selectedPage === 'Customers Management' && <CustomersPage />}
             {selectedPage === 'Map' && <MapOverview />}
-            {selectedPage === 'Overview' && <p>Manage Overview here.</p>}
+            {/* {selectedPage === 'Overview' && <p>Manage Overview here.</p>}
             {selectedPage === 'Charging Stations' && <p>Manage Charging Stations here.</p>}
             {selectedPage === 'Parking Spots Management' && <p>Adjust Parking Spots Management here.</p>}
             {selectedPage === 'Billing and Fees Management' && <p>Manage Billing and Fees here.</p>}
-            {selectedPage === 'Map View' && <p>View the map here.</p>}
+            {selectedPage === 'Map View' && <p>View the map here.</p>} */}
         </div>
     );
 };

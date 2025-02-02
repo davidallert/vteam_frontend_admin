@@ -12,6 +12,11 @@ import client from './apolloClient';
 //Redux
 import { store } from './store/redux-store';
 
+// Initialize WebSocket
+import { initWebsocketWithStore } from "./websocket/websocket";
+
+initWebsocketWithStore(store);
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
