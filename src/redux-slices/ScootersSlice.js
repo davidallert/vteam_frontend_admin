@@ -15,7 +15,7 @@ export const fetchScooters = createAsyncThunk('scooters/fetch', async () => {
     // Define the GraphQL query to fetch scooters
     const SCOOTERS_QUERY = gql`
         query {
-            scooters {
+            scooters (limit:0){
                 _id
                 status
                 customid

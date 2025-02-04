@@ -12,6 +12,7 @@ function DisplayScooters() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { data: scooters, status } = useSelector((state) => state.scooters);
+    const [searchCustomId, setSearchCustomId] = useState('');
 
     useEffect(() => {
         if (status === 'idle') {
@@ -30,13 +31,29 @@ function DisplayScooters() {
     return (
         <div>
             <h2>Scooters Management</h2>
+            <div>
+                {/* Search form */}
+                <form>
+                    <input
+                        type="text"
+                        value={searchCustomId}
+                        onChange={(e) => setSearchCustomId(e.target.value)}
+                        placeholder="CustomId to search"
+                        required
+                    /><br/>
+                    <button className={buttons.buttonPrimary} onClick={() => navigate('/find-scooter-by-customId', { 
+                                    state: { scooterCustomId: searchCustomId } 
+                                })}
+                    >Search</button>
+                </form>
+            </div>
             {scooters.length === 0 && <p>Loading scooters...</p>}
             {scooters.length > 0 && (
                 <div className={layout.wrapper}>
                     <ul className={layout.ul}>
                         {scooters.map((scooter) => (
                             <li key={scooter._id} className={layout.li}>
-                                <h2><strong>Scooter:</strong> {scooter.customid}</h2>
+                                <h2><strong>Custom id:</strong> {scooter.customid}</h2>
                                 <p><strong>Database ID:</strong> {scooter._id}</p>
                                 <p><strong>Status:</strong> {scooter.status}</p>
                                 <p><strong>Battery Level:</strong> {scooter.battery_level}%</p>

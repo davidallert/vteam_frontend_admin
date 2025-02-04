@@ -26,7 +26,6 @@ export const fetchStationsData = async () => {
     return data.stations;
 };
 
-
 export const fetchStations = createAsyncThunk('stations/fetch', async () => {
     // Define the GraphQL query to fetch stations
     const STATIONS_QUERY = gql`

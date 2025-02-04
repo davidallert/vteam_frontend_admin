@@ -108,31 +108,13 @@ function MapOverview() {
             ]}
             icon={scooter.status === 'active' ? activeScooterIcon : inactiveScooterIcon}
             >
-            <Popup>
-                Scooter ID: {scooter._id} <br />
-                Status: {scooter.status} <br />
-                Battery Level: {scooter.battery_level}%
-            </Popup>
+                <Popup>
+                    Scooter ID: {scooter._id} <br />
+                    Status: {scooter.status} <br />
+                    Battery Level: {scooter.battery_level}%
+                </Popup>
             </Marker>
         ))}
-
-        {/* Render markers for cities
-        {cities.map((city, index) => (
-            <Marker key={index} position={[city.lat, city.lng]}>
-            <Popup>
-                City: {city.name}
-            </Popup>
-            </Marker>
-        ))} */}
-
-        {/* Render markers for charging stations */}
-        {/* {chargingStations.map((station, index) => (
-            <Marker key={index} position={[station.lat, station.lng]}>
-            <Popup>
-                Charging Station: {station.name}
-            </Popup>
-            </Marker>
-        ))} */}
         </MapContainer>
     );
 };

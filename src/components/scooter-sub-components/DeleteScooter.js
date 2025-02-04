@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GraphQLClient, gql } from 'graphql-request';
 import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { fetchScooters } from '../../redux-slices/ScootersSlice';
+
+
 
 const token = localStorage.getItem('token');
 console.log('Token present:', !!token);
@@ -28,6 +32,7 @@ const DeleteScooter = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
+    const dispatch = useDispatch();
 
     // console.log('Location state:', location.state);
 
@@ -47,6 +52,7 @@ const DeleteScooter = () => {
 
             const data = await client.request(DELETE_SCOOTER_MUTATION, variables);
             console.log('Delete response:', data);
+            dispatch(fetchScooters());
             navigate('/scooters');
         } catch (error) {
             console.error('Error deleting scooter:', error);

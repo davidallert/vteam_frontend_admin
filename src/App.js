@@ -11,6 +11,7 @@ import DeleteUser from './components/user-sub-components/DeleteUser';
 import CreateUser from './components/user-sub-components/CreateUser';
 import UpdateUserInfo from './components/user-sub-components/UpdateUserInfo';
 import FindUserByEmail from './components/user-sub-components/FindUserByEmail';
+import FindScooterByCustomId from './components/scooter-sub-components/FindScooterByCustomId';
 
 import MapOverview from './components/MapOverview';
 
@@ -33,6 +34,7 @@ function App() {
             <Route path="/update-user-info" element={<UpdateUserInfo/>} />
             <Route path="/find-user-by-email" element={<FindUserByEmail/>} />
             <Route path="/map-overview" element={<MapOverview/>} />
+            <Route path="/find-scooter-by-customId" element={<FindScooterByCustomId/>} />
           </Routes>
         </Router>
       </div>

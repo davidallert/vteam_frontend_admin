@@ -53,20 +53,20 @@ function DisplayUsers() {
         <div>
             <h2>Users Management</h2>
             <div>
-                    {/* Search form */}
-                    <form>
-                        <input
-                            type="text"
-                            value={searchEmail}
-                            onChange={(e) => setSearchEmail(e.target.value)}
-                            placeholder="Email to search"
-                            required
-                        /><br/>
-                        <button className={buttons.buttonPrimary} onClick={() => navigate('/find-user-by-email', { 
-                                        state: { userEmail: searchEmail } 
-                                    })}
-                        >Search</button>
-                    </form>
+                {/* Search form */}
+                <form>
+                    <input
+                        type="text"
+                        value={searchEmail}
+                        onChange={(e) => setSearchEmail(e.target.value)}
+                        placeholder="Email to search"
+                        required
+                    /><br/>
+                    <button className={buttons.buttonPrimary} onClick={() => navigate('/find-user-by-email', { 
+                                    state: { userEmail: searchEmail } 
+                                })}
+                    >Search</button>
+                </form>
             </div>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {!error && users.length === 0 && <p>Loading users...</p>}
