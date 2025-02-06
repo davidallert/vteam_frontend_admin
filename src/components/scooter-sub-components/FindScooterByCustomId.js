@@ -44,7 +44,7 @@ const FindScooter = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const searchScooterCustomId = location.state?.scooterCustomId;
-    console.log("searchScooterCustomId", searchScooterCustomId)
+    // console.log("searchScooterCustomId", searchScooterCustomId)
 
     const handleSearch = async () => {
         try {
@@ -53,7 +53,7 @@ const FindScooter = () => {
             };
 
             const data = await client.request(FIND_SCOOTER_QUERY, variables);
-            console.log('Searched scooter data:', data);
+            // console.log('Searched scooter data:', data);
             setScooter(data.scooterById);
         } catch (error) {
             console.error('Error searching scooter by email:', error);

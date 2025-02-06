@@ -14,8 +14,7 @@ import { store } from './store/redux-store';
 
 // Initialize WebSocket
 import { initWebsocketWithStore } from "./websocket/websocket";
-
-initWebsocketWithStore(store);
+console.log("store", store);
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

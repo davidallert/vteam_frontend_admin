@@ -15,11 +15,12 @@ function DisplayScooters() {
     const [searchCustomId, setSearchCustomId] = useState('');
 
     useEffect(() => {
+        console.log("🟢 React Component: Scooters Updated from Redux:", scooters);
         if (status === 'idle') {
             dispatch(fetchScooters());
         }
-    }, [status, dispatch]);
-    
+    }, [status, dispatch, scooters]);
+
         if (status === 'loading') {
             return <p>Loading scooters...</p>;
         }

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { GraphQLClient, gql } from 'graphql-request';
-import { updateScooterStatusWS } from '../websocket/websocket';
+import { updateScooterStatusWS,  updateScooterLocationWS } from '../websocket/websocket';
 
 
 // Define the GraphQL client with the Authorization header
@@ -46,12 +46,28 @@ const scootersSlice = createSlice({
             })
             .addCase(fetchScooters.rejected, (state) => { state.status = 'failed'; })
             .addCase(updateScooterStatusWS, (state, action) => {
+                console.log("🟢 Redux Action Received:", action.payload);
+                console.log("State:", state.data);
+                console.log("Type of state:", typeof state);
                 const { scooterId, status } = action.payload;
-                const scooter = state.find((s) => s.scooterId === scooterId);
+                const scooter = state.data.find((s) => s.customid === scooterId);
                 if (scooter) {
                   scooter.status = status;
+                  console.log("✅ Updated Scooter in Redux:", scooter);
+                  console.log("Scooter:", scooter);
                 }
-                console.log("No scooter found with scooterId:", scooterId);
+                // console.log("No scooter found with scooterId:", scooterId);
+            })
+            .addCase(updateScooterLocationWS, (state, action) => {
+                console.log("🟢 Redux Action Received:", action.payload);
+                const { scooterId, current_location } = action.payload;
+                const scooter = state.data.find((s) => s.customid === scooterId);
+                if (scooter) {
+                  scooter.current_location = current_location;
+                  console.log("✅ Updated Scooter Location in Redux:", scooter);
+                } else {
+                  console.log("No scooter found with customid:", scooterId);
+                }
             });
     },
 });
