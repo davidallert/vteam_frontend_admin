@@ -3,15 +3,15 @@ import { GraphQLClient, gql } from 'graphql-request';
 import { updateScooterStatusWS,  updateScooterLocationWS } from '../websocket/websocket';
 
 
-// Define the GraphQL client with the Authorization header
-const client = new GraphQLClient('http://localhost:8585/graphql/scooters', {
-    headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-    },
-});
 
 export const fetchScooters = createAsyncThunk('scooters/fetch', async () => {
+    // Define the GraphQL client with the Authorization header
+    const client = new GraphQLClient('http://localhost:8585/graphql/scooters', {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+    });
     // Define the GraphQL query to fetch scooters
     const SCOOTERS_QUERY = gql`
         query {
