@@ -71,3 +71,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 Scrutinizer:
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/davidallert/vteam_frontend_admin/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/davidallert/vteam_frontend_admin/?branch=main)
+
+[![Build Status](https://scrutinizer-ci.com/g/davidallert/vteam_frontend_admin/badges/build.png?b=main)](https://scrutinizer-ci.com/g/davidallert/vteam_frontend_admin/build-status/main)
